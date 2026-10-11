@@ -1,19 +1,27 @@
-app: anyship-demo-event-desk
+app: app-72d771c6ab53485d9b63
 source:
   repo: https://github.com/jaedong29/anyship-demo-event-desk
+  commit: e7d1fb50f2131e2791645c0f2894fe415cb32ca7
 build:
   dockerfile: Dockerfile
   runtime_hint: python3.12
 port: 8080
 healthcheck: /healthz
 ingress: public
-env: []
+env:
+- name: LOG_LEVEL
+  secret: false
+  generate: false
+  value: INFO
+- name: SECRET_KEY
+  secret: true
+  generate: true
 backing_services:
-  - type: postgres
-    bind_as: DATABASE_URL
+- type: postgres
+  bind_as: DATABASE_URL
 workload:
   type: request-driven
-  scale_to_zero: false
+  scale_to_zero: true
   max_request_seconds: 10
   websocket: false
 processes:
