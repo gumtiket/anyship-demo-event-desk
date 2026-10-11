@@ -1,3 +1,4 @@
+import os
 import hashlib
 import hmac
 import secrets
@@ -140,4 +141,9 @@ def cancel(registration_id: int, body: CancelRequest, session: Database) -> dict
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000)
+    uvicorn.run("app.main:app", host="0.0.0.0", port=int(os.environ.get("PORT", "8080")))
+
+
+@app.get("/healthz")
+def _bronze_healthz() -> dict[str, str]:
+    return {"status": "ok"}
