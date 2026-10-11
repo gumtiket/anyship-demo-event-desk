@@ -1,0 +1,10 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>모여봐요 · Event Desk</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head><body>
+<header><a class="brand" href="/">✳ EVENT DESK</a><span>우리 동아리의 작은 모임</span></header>
+<main><section class="hero"><div><p class="eyebrow">MAKE A LITTLE TIME TOGETHER</p><h1>오늘, 모여봐요<span>.</span></h1><p>배우고, 놀고, 이야기 나누는 시간.<br>마음에 드는 모임을 골라 자리를 남겨주세요.</p></div><div class="hero-art" aria-hidden="true"><span class="sun">✳</span><span class="bubble">HELLO,<br>TOGETHER!</span></div></section>
+<section class="stats" aria-label="모임 현황"><div><span>열린 모임</span><strong id="event-count">—</strong><small>개</small></div><div><span>함께할 사람들</span><strong id="joined-count">—</strong><small>명</small></div><div><span>남아 있는 자리</span><strong id="remaining-count">—</strong><small>석</small></div></section>
+<p id="notice" role="status" aria-live="polite" hidden></p>
+<div class="section-heading"><div><p class="eyebrow">PICK YOUR MOMENT</p><h2>이번 모임 둘러보기</h2></div><button id="refresh" class="quiet" type="button">새로고침 ↻</button></div>
+<section id="events" class="events" aria-live="polite"><p class="empty">모임을 불러오는 중이에요.</p></section>
+<div class="bottom-grid"><form id="join-form" class="panel join-panel"><p class="eyebrow">SAVE YOUR SEAT</p><h2>나도 함께할게요</h2><label for="event-choice">참여할 모임</label><select id="event-choice" required><option value="">모임을 선택하세요</option></select><label for="nickname">가상 닉네임</label><input id="nickname" required maxlength="40" placeholder="예: 코드하는 곰"><button type="submit" class="primary">자리 신청하기 ↗</button><p class="help">시연 앱입니다. 실제 이름 대신 가상의 닉네임으로 참여해 주세요.</p></form>
+<section class="panel records-panel"><div class="section-heading"><div><p class="eyebrow">THE GUEST LIST</p><h2>신청한 사람들</h2></div><span class="small">최근 100건</span></div><div id="records" class="records" aria-live="polite"><p class="empty">신청 기록을 불러오는 중이에요.</p></div></section></div>
+</main><footer><span>EVENT DESK — 모이는 순간, 시작되는 이야기.</span><span>공유 시연 앱</span></footer></body></html>
