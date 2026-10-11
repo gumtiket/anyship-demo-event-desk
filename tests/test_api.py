@@ -1,4 +1,3 @@
-import os
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlsplit
@@ -6,9 +5,15 @@ from urllib.parse import urlsplit
 import httpx
 import pytest
 
-BASE = os.environ.get("TEST_BASE_URL", "http://127.0.0.1:18092")
-if urlsplit(BASE).hostname not in {"localhost", "127.0.0.1"}:
-    raise RuntimeError("Run write tests only against a disposable local demo.")
+BASE = "http://127.0.0.1:18093"
+
+
+@pytest.fixture(scope="session", autouse=True)
+def configure_target(pytestconfig):
+    global BASE
+    BASE = pytestconfig.getoption("--base-url")
+    if urlsplit(BASE).hostname not in {"localhost", "127.0.0.1"}:
+        raise RuntimeError("Run write tests only against a disposable local demo.")
 
 
 def request(method, path, **kwargs):
